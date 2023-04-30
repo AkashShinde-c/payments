@@ -26,6 +26,7 @@ const Payload = mongoose.model('Payload', payloadSchema);
 
 // POST route
 app.post('/payload', (req, res) => {
+    console.log(req,"Ran")
   const payloadData = new Payload({ data: req.body });
   payloadData.save((err) => {
     if (err) {
@@ -39,7 +40,7 @@ app.post('/payload', (req, res) => {
 });
 
 // Start the server
-const PORT = 80;
+const PORT = 443;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
