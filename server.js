@@ -26,21 +26,18 @@ const Payload = mongoose.model('Payload', payloadSchema);
 
 // POST route
 app.post('/payload', (req, res) => {
-    console.log(req,"Ran")
-  const payloadData = new Payload({ data: req.body });
-  payloadData.save((err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error saving payload data');
-    } else {
-      console.log('Payload data saved to MongoDB');
-      res.send('Payload received and saved!');
-    }
-  });
+    console.log("req")
+  payloadData = new Payload({ data: req.body });
+  payloadData.save();
+  res.send("ok")
 });
 
+app.get('/call',(req,res)=>{
+    res.send("fuck")
+})
+
 // Start the server
-const PORT = 443;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
